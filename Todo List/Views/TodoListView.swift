@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct TodoListView: View {
+    
     @EnvironmentObject var taskVM : TaskViewModel
     @State private var isEditMode: EditMode = .inactive
     
@@ -15,18 +16,8 @@ struct TodoListView: View {
         
         TaskList()
             .navigationTitle(Constants.navigationTitle)
-            .toolbar{
-                if !taskVM.taskItems.isEmpty{
-                    ToolbarItem(placement: .topBarLeading) {
-                        EditButton()
-                    }
-                    ToolbarItem(placement: .topBarTrailing) {
-                        NavigationLink{
-                            AddItemView()
-                        }label:{Text(Constants.addToolbarTitle) }
-                    }
-                }
-            }.onChange(of: taskVM.taskItems) { _, _ in
+            .homePageToolbar(task: taskVM.taskItems, title: Constants.addToolbarTitle)
+            .onChange(of: taskVM.taskItems) { _, _ in
                 if taskVM.taskItems.isEmpty{
                     isEditMode = .inactive
                 }
@@ -34,6 +25,8 @@ struct TodoListView: View {
             .environment(\.editMode, $isEditMode)
     }
  
+    //MARK: - Constants
+
     struct Constants{
        static let navigationTitle = "Todo List 📝"
        static let addToolbarTitle = "Add"

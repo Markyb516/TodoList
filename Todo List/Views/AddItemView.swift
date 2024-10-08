@@ -8,22 +8,20 @@
 import SwiftUI
 
 struct AddItemView: View {
+    @Environment(\.colorScheme) var colorScheme
     @Environment(\.dismiss) var dissmiss
     @State var textFieldText : String = ""
     @EnvironmentObject var taskVM : TaskViewModel
     @State var showAlert = false
-    
-    var colorLiteral = #colorLiteral(red: 0.921431005, green: 0.9214526415, blue: 0.9214410186, alpha: 1)
+    let colorLiteral = #colorLiteral(red: 0.921431005, green: 0.9214526415, blue: 0.9214410186, alpha: 1)
     
     func savedButtonPressed(){
         if textIsApporoved(text: textFieldText){
             taskVM.addTask(textFieldText)
-            print("Item added : \(textFieldText)")
             dissmiss.callAsFunction()
         }
         else{
             showAlert.toggle()
-            print("item is invalid")
         }
     }
     
@@ -34,30 +32,58 @@ struct AddItemView: View {
     var body: some View {
         ScrollView{
             VStack{
-                TextField("Type something here...", text: $textFieldText)
-                    .padding()
-                    .background(Color(colorLiteral))
-                    .clipShape(RoundedRectangle(cornerRadius: 10))
-                
-                Button(action:savedButtonPressed, label: {
-                    Text("Save")
-                        .foregroundStyle(.white)
-                        .padding()
-                        .font(.title)
-                        .frame(maxWidth: .infinity)
-                        .background(Color.accentColor)
-                        .clipShape(RoundedRectangle(cornerRadius: 10))
-
-                })
-                
-                
+                UserInput
+                    .padding(.top)
+                SaveButton
+                Spacer()
             }
-            .padding(.horizontal,8)
-
         }
-        .navigationTitle("Add an Item 🖊️")
+        .padding(.horizontal,Constants.spacing)
+        .frame(maxWidth: 525)
+        .navigationTitle(Constants.pageTitle)
         .alert(isPresented: $showAlert) {
-            Alert(title: Text("Item is invalid"))
+            Alert(title: Text(Constants.alertText))
+        }
+    }
+    
+    
+//MARK: - View properties
+    
+    var UserInput : some View{
+        
+        TextField( "",text: $textFieldText , prompt: Text( Constants.UserInput.placeholder).foregroundStyle(.black), axis: .vertical)
+        
+            .foregroundStyle(.black)
+            .padding()
+            .background(Color(colorLiteral))
+            .clipShape(RoundedRectangle(cornerRadius: Constants.UserInput.radius))
+    }
+    
+    var SaveButton : some View{
+        Button(action:savedButtonPressed, label: {
+            Text(Constants.SaveButton.label)
+                .foregroundStyle(.white)
+                .padding()
+                .font(.title)
+                .frame(maxWidth: .infinity)
+                .background(colorScheme == .dark ? Color(UIColor(named: "accentColor")!) : Color.blue )
+                .clipShape(RoundedRectangle(cornerRadius: Constants.SaveButton.radius))
+
+        })
+    }
+    
+    //MARK: - Constants
+    struct Constants{
+        static let alertText = "Item is invalid"
+        static let pageTitle = "Add an Item 🖊️"
+        static let spacing = 8.0
+        struct SaveButton{
+            static let label = "Save"
+            static let radius = 10.0
+        }
+        struct UserInput {
+            static let placeholder = "Type something here..."
+            static let radius = 10.0
         }
     }
 }

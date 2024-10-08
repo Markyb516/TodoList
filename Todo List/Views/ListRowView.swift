@@ -11,12 +11,19 @@ struct ListRowView: View {
     let task : TodoItem
     var body: some View {
         HStack{
-            Image(systemName: task.complete ? "checkmark.circle.fill" : "circle")
+            Image(systemName: task.complete ? Constants.completedImage: Constants.toDoImage)
                 .foregroundStyle(task.complete ? .green : .red)
             NavigationLink(task.description){
                 Text(task.description)
             }
         }.font(.title2)
+            .foregroundStyle(.primary)
+    }
+    //MARK: - Constants
+
+    struct Constants{
+       static let completedImage = "checkmark.circle.fill"
+       static let toDoImage = "circle"
     }
 }
 

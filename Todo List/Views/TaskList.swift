@@ -13,31 +13,44 @@ struct TaskList: View {
     var body: some View {
         ZStack{
             if taskVM.taskItems.isEmpty{
-            NoToDoItemsView()
+                NoToDoItemsView()
                     .transition(AnyTransition.opacity.animation(.easeIn(duration: Constants.animationDuration)))
             }
             else{
-                List{
-                    ForEach(taskVM.taskItems){ taskItem in
-                        ListRowView(task: taskItem).onTapGesture {
-                            withAnimation{
-                                taskVM.completeToggle(task: taskItem)
-                            }
-                        }
-                    }
-                    .onDelete(perform: taskVM.remove)
-                    .onMove(perform:taskVM.move)
-                    
-                }
-                
+                ListData.frame(maxWidth: 450)
             }
         }
     }
+    
+    //MARK: - View properties
+    
+    var ListData : some View {
+        List{
+            ForEach(taskVM.taskItems){ taskItem in
+                ListRowView(task: taskItem).onTapGesture {
+                    withAnimation{
+                        taskVM.completeToggle(task: taskItem)
+                    }
+                }
+            }
+            .onDelete(perform: taskVM.remove)
+            .onMove(perform:taskVM.move)
+            
+        }
+    }
+    
+    //MARK: - Constants
+
     struct Constants{
         static let animationDuration = 0.5
     }
 }
 
 #Preview {
-    TaskList()
+  
+    NavigationStack{
+        TaskList()
+            .environmentObject(TaskViewModel())
+    }
 }
+
