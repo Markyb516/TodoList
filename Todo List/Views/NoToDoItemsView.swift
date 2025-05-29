@@ -15,7 +15,6 @@ struct NoToDoItemsView: View {
            AddItemLink
            Spacer()
         }
-        .frame(maxWidth: 400, maxHeight: .infinity)
         
     }
     
@@ -44,7 +43,7 @@ struct NoToDoItemsView: View {
                 .font(.headline)
                 .frame(maxWidth: .infinity)
                 .padding()
-                .background(animate ?   Color(UIColor(named: "accentColor")!) : .clear)
+                .background(animate ? .accent : .clear)
                 .clipShape(RoundedRectangle(cornerRadius: Constants.AddItemLink.cornerRadius))
                 .padding(.horizontal, Constants.AddItemLink.butttonPadding)
                

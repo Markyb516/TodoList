@@ -8,18 +8,49 @@
 import SwiftUI
 
 struct TaskList: View {
+    @State private var isEditing: EditMode = .inactive
+
     @EnvironmentObject var taskVM : TaskViewModel
-    
     var body: some View {
         ZStack{
-            if taskVM.taskItems.isEmpty{
-                NoToDoItemsView()
-                    .transition(AnyTransition.opacity.animation(.easeIn(duration: Constants.animationDuration)))
+            if taskVM.taskItems.isEmpty {
+                    
+                    NoToDoItemsView()
+                        .background(.quinary)
+                    
+                        .transition(AnyTransition.opacity.animation(.easeIn(duration: Constants.animationDuration)))
+                        .toolbar(.hidden, for: .automatic)
+                        .onAppear {
+                            isEditing = .inactive
+                        }
+                
+                
             }
             else{
-                ListData.frame(maxWidth: 450)
+                ListData
+                    .toolbar {
+                        ToolbarItem(
+                         placement: .topBarLeading) {
+                             EditButton()
+                         }
+                        ToolbarItem(placement: .topBarTrailing) {
+                            NavigationLink{
+                                AddItemView()
+                            }label:{Text("Add")}
+                        }
+                    }
+
             }
         }
+      
+        .frame(maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/ , maxHeight: .infinity)
+        .background(.quinary)
+        .environment(\.editMode, $isEditing)
+
+
+        
+        
+
     }
     
     //MARK: - View properties
@@ -35,6 +66,8 @@ struct TaskList: View {
             }
             .onDelete(perform: taskVM.remove)
             .onMove(perform:taskVM.move)
+          
+           
             
         }
     }
@@ -43,6 +76,7 @@ struct TaskList: View {
 
     struct Constants{
         static let animationDuration = 0.5
+        static let addToolbarTitle = "Add"
     }
 }
 

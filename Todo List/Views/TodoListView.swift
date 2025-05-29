@@ -10,26 +10,23 @@ import SwiftUI
 struct TodoListView: View {
     
     @EnvironmentObject var taskVM : TaskViewModel
-    @State private var isEditMode: EditMode = .inactive
+
     
     var body: some View {
         
         TaskList()
+            
             .navigationTitle(Constants.navigationTitle)
-            .homePageToolbar(task: taskVM.taskItems, title: Constants.addToolbarTitle)
-            .onChange(of: taskVM.taskItems) { _, _ in
-                if taskVM.taskItems.isEmpty{
-                    isEditMode = .inactive
-                }
-            }
-            .environment(\.editMode, $isEditMode)
+           
     }
  
     //MARK: - Constants
 
     struct Constants{
        static let navigationTitle = "Todo List 📝"
-       static let addToolbarTitle = "Add"
+        static let addToolbarTitle = "Add"
+
+   
     }
 }
 

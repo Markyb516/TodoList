@@ -6,6 +6,7 @@
 //
 
 import Foundation
+typealias TodoItem = TaskModel.TodoItem
 
 struct TaskModel {
     var task : [TodoItem] = []
@@ -15,6 +16,9 @@ struct TaskModel {
             task[foundIndex].complete.toggle()
         }
     }
+    
+    
+    
     struct TodoItem : Identifiable , Equatable , Codable{
         let description : String
         var complete : Bool

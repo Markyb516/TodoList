@@ -6,43 +6,46 @@
 //
 
 import Foundation
-typealias TodoItem = TaskModel.TodoItem
 
 class TaskViewModel : ObservableObject{
-    
-    @Published private var model = TaskModel(){
-        didSet{
-            saveData()
-        }
-    }
+    @Published private var model = TaskModel()
     
     init() {
-        getItems()
+        loadData()
     }
-    
+
     var taskItems : [TodoItem] {
         model.task
     }
-
-    func getItems()  {
-        if let data =  UserDefaults.standard.data(forKey: Constants.itemsKey), let decodedData = try? JSONDecoder().decode([TodoItem].self, from: data){
-                model.task.append(contentsOf: decodedData)
-        }
-    }
+    
+  
+    private func loadData() {
+           if let data = UserDefaults.standard.data(forKey: Constants.itemsKey),
+              let decoded = try? JSONDecoder().decode([TodoItem].self, from: data) {
+               model.task = decoded
+           }
+       }
+    
+       
     func remove(atOffsets: IndexSet){
         model.task.remove(atOffsets: atOffsets)
+        saveData()
     }
     
     func move(fromOffsets: IndexSet, toOffset: Int){
         model.task.move(fromOffsets: fromOffsets, toOffset: toOffset)
+        saveData()
     }
     
     func addTask(_ description : String){
         model.task.append(TodoItem(description: description, complete: false))
+        saveData()
+
     }
     
     func completeToggle(task: TodoItem){
         model.completeToggle(item: task)
+        saveData()
         
     }
     

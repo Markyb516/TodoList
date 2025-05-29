@@ -12,6 +12,9 @@ struct AddItemView: View {
     @Environment(\.dismiss) var dissmiss
     @State var textFieldText : String = ""
     @EnvironmentObject var taskVM : TaskViewModel
+    
+  
+    
     @State var showAlert = false
     let colorLiteral = #colorLiteral(red: 0.921431005, green: 0.9214526415, blue: 0.9214410186, alpha: 1)
     
@@ -31,12 +34,11 @@ struct AddItemView: View {
     
     var body: some View {
         ScrollView{
-            VStack{
                 UserInput
-                    .padding(.top)
+                .padding(.vertical)
                 SaveButton
                 Spacer()
-            }
+            
         }
         .padding(.horizontal,Constants.spacing)
         .frame(maxWidth: 525)
@@ -57,6 +59,7 @@ struct AddItemView: View {
             .padding()
             .background(Color(colorLiteral))
             .clipShape(RoundedRectangle(cornerRadius: Constants.UserInput.radius))
+        
     }
     
     var SaveButton : some View{
@@ -66,7 +69,7 @@ struct AddItemView: View {
                 .padding()
                 .font(.title)
                 .frame(maxWidth: .infinity)
-                .background(colorScheme == .dark ? Color(UIColor(named: "accentColor")!) : Color.blue )
+                .background(colorScheme == .dark ? .accent : Color.blue )
                 .clipShape(RoundedRectangle(cornerRadius: Constants.SaveButton.radius))
 
         })
