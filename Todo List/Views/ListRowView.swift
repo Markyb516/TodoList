@@ -14,7 +14,7 @@ struct ListRowView: View {
             Image(systemName: task.complete ? Constants.completedImage: Constants.toDoImage)
                 .foregroundStyle(task.complete ? .green : .red)
             NavigationLink(task.description){
-                Text(task.description)
+                TodoItemView(todoItem: task)
             }
         }.font(.title2)
             .foregroundStyle(.primary)

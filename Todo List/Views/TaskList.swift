@@ -64,8 +64,8 @@ struct TaskList: View {
                     }
                 }
             }
-            .onDelete(perform: taskVM.remove)
-            .onMove(perform:taskVM.move)
+            .onDelete(perform: taskVM.removeItem)
+            .onMove(perform:taskVM.moveItem)
           
            
             

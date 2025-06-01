@@ -20,7 +20,7 @@ struct AddItemView: View {
     
     func savedButtonPressed(){
         if textIsApporoved(text: textFieldText){
-            taskVM.addTask(textFieldText)
+            taskVM.addItem(textFieldText)
             dissmiss.callAsFunction()
         }
         else{

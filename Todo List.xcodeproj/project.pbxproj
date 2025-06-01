@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B604B4812DEBA650002716B7 /* TodoItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B604B4802DEBA650002716B7 /* TodoItemView.swift */; };
+		B604B4842DECE62D002716B7 /* EditItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B604B4832DECE62D002716B7 /* EditItemView.swift */; };
 		B66356252CB1CC79004A2694 /* Todo_ListApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B66356242CB1CC79004A2694 /* Todo_ListApp.swift */; };
 		B66356272CB1CC79004A2694 /* TodoListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B66356262CB1CC79004A2694 /* TodoListView.swift */; };
 		B66356292CB1CC7B004A2694 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B66356282CB1CC7B004A2694 /* Assets.xcassets */; };
@@ -21,6 +23,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		B604B4802DEBA650002716B7 /* TodoItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoItemView.swift; sourceTree = "<group>"; };
+		B604B4832DECE62D002716B7 /* EditItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditItemView.swift; sourceTree = "<group>"; };
 		B66356212CB1CC79004A2694 /* Todo List.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Todo List.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B66356242CB1CC79004A2694 /* Todo_ListApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Todo_ListApp.swift; sourceTree = "<group>"; };
 		B66356262CB1CC79004A2694 /* TodoListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoListView.swift; sourceTree = "<group>"; };
@@ -100,6 +104,8 @@
 				B66356352CB1CEBE004A2694 /* ListRowView.swift */,
 				B663563D2CB2EEA7004A2694 /* NoToDoItemsView.swift */,
 				B66356372CB1D468004A2694 /* AddItemView.swift */,
+				B604B4802DEBA650002716B7 /* TodoItemView.swift */,
+				B604B4832DECE62D002716B7 /* EditItemView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -188,7 +194,9 @@
 				B66356432CB385DA004A2694 /* TaskList.swift in Sources */,
 				B66356272CB1CC79004A2694 /* TodoListView.swift in Sources */,
 				B663563A2CB1DE48004A2694 /* TaskModel.swift in Sources */,
+				B604B4812DEBA650002716B7 /* TodoItemView.swift in Sources */,
 				B663563E2CB2EEA7004A2694 /* NoToDoItemsView.swift in Sources */,
+				B604B4842DECE62D002716B7 /* EditItemView.swift in Sources */,
 				B66356252CB1CC79004A2694 /* Todo_ListApp.swift in Sources */,
 				B66356362CB1CEBE004A2694 /* ListRowView.swift in Sources */,
 			);

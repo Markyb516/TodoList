@@ -27,20 +27,30 @@ class TaskViewModel : ObservableObject{
        }
     
        
-    func remove(atOffsets: IndexSet){
+    
+    // MARK: -  To do item methods
+    
+    func removeItem(atOffsets: IndexSet){
         model.task.remove(atOffsets: atOffsets)
         saveData()
     }
     
-    func move(fromOffsets: IndexSet, toOffset: Int){
+    func moveItem(from fromOffsets: IndexSet, to toOffset: Int){
         model.task.move(fromOffsets: fromOffsets, toOffset: toOffset)
         saveData()
     }
     
-    func addTask(_ description : String){
+    func addItem(_ description : String){
         model.task.append(TodoItem(description: description, complete: false))
         saveData()
 
+    }
+    
+    func editItem(id : String, description : String ){
+        if let index =  model.task.firstIndex(where: {$0.id == id}){
+            model.task[index].description = description
+            saveData()
+        }
     }
     
     func completeToggle(task: TodoItem){
@@ -52,8 +62,10 @@ class TaskViewModel : ObservableObject{
     func saveData() {
         if let encodedData = try? JSONEncoder().encode(model.task){
             UserDefaults.standard.set(encodedData, forKey: Constants.itemsKey)
+        
         }
     }
+    
     
     
     struct Constants{

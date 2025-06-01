@@ -20,8 +20,8 @@ struct TaskModel {
     
     
     struct TodoItem : Identifiable , Equatable , Codable{
-        let description : String
+        var description : String
         var complete : Bool
-        var id = UUID().uuidString
+        private(set) var id = UUID().uuidString
     }
 }
