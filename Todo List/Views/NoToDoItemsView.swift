@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct NoToDoItemsView: View {
-    @State var animate = false
+    @State private var animate = false
     var body: some View {
         VStack(spacing: Constants.spacing){
            Details

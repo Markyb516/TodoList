@@ -9,7 +9,7 @@ import SwiftUI
 
 struct TodoListView: View {
     
-    @EnvironmentObject var taskVM : TaskViewModel
+    @EnvironmentObject private var taskVM : TaskViewModel
 
     
     var body: some View {

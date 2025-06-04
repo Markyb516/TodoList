@@ -9,7 +9,7 @@ import SwiftUI
 
 struct TodoItemView: View {
     var todoItem : TodoItem
-    @State var editView = false
+    @State private var editView = false
     var body: some View {
         Text("\(todoItem.description)")
             .sheet(isPresented: $editView, content: {

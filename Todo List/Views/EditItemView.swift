@@ -8,9 +8,9 @@
 import SwiftUI
 
 struct EditItemView: View {
-    @EnvironmentObject var taskVM : TaskViewModel
+    @EnvironmentObject private var taskVM : TaskViewModel
     let item: TodoItem
-    @State  var fieldText = ""
+    @State private var fieldText = ""
     @Binding var display : Bool
 
     var body: some View {

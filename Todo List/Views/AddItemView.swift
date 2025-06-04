@@ -8,10 +8,10 @@
 import SwiftUI
 
 struct AddItemView: View {
-    @Environment(\.colorScheme) var colorScheme
-    @Environment(\.dismiss) var dissmiss
-    @State var textFieldText : String = ""
-    @EnvironmentObject var taskVM : TaskViewModel
+    @Environment(\.colorScheme) private var colorScheme
+    @Environment(\.dismiss) private var dissmiss
+    @State private var textFieldText : String = ""
+    @EnvironmentObject private var taskVM : TaskViewModel
     
   
     

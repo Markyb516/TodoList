@@ -10,7 +10,7 @@ import SwiftUI
 struct TaskList: View {
     @State private var isEditing: EditMode = .inactive
 
-    @EnvironmentObject var taskVM : TaskViewModel
+    @EnvironmentObject private var taskVM : TaskViewModel
     var body: some View {
         ZStack{
             if taskVM.taskItems.isEmpty {

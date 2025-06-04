@@ -9,7 +9,7 @@ import SwiftUI
 
 @main
 struct Todo_ListApp: App {
-    @StateObject var taskViewModel : TaskViewModel = TaskViewModel()
+    @StateObject private var taskViewModel : TaskViewModel = TaskViewModel()
     var body: some Scene {
         WindowGroup {
             NavigationStack{
