@@ -23,7 +23,7 @@ Xcode (latest version recommended)
 This Todo List app serves as a practical demonstration of my proficiency in iOS development, specifically showcasing a solid understanding and implementation of CRUD operations and
 effective management of data persistence within an iOS application.
 
-
+## Screenshots
 <img width="250" alt="Image" src="https://github.com/user-attachments/assets/b84176fe-f006-4ac3-976e-3a56c368a183" />
 <img width="260" alt="Image" src="https://github.com/user-attachments/assets/37c366cf-e253-4b83-8031-3204cb8664b3" />
 
