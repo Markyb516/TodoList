@@ -24,8 +24,7 @@ This Todo List app serves as a practical demonstration of my proficiency in iOS 
 effective management of data persistence within an iOS application.
 
 
-<img width="250" alt="Image" src="https://github.com/user-attachments/assets/73c88e6e-0172-4597-a984-12275cda97a9" />    
-
+<img width="260" alt="Image" src="https://github.com/user-attachments/assets/b84176fe-f006-4ac3-976e-3a56c368a183" />
 
 <img width="260" alt="Image" src="https://github.com/user-attachments/assets/eb20f76d-c6f8-477d-a99e-ac6a91863cb6" />
 
